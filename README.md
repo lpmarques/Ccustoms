@@ -1,87 +1,87 @@
-#Ccustoms
+# Ccustoms
 
-##Description
+## Description
 
 My utilslib.c and sortslib.c libraries of auxiliary functions for C programming.
 
 
-##Usage
+## Usage
 
-- Add lines `#include "utilslib.h"` and/or `#include "sortslib.h"` to the headers of your main source code;
+- Add lines `# include "utilslib.h"` and/or `# include "sortslib.h"` to the headers of your main source code;
 - Make sure to place **utilslib.c** and **utilslib.h** (or **sortslib.c** and **sortslib.h**) files in the same directory where you intend to compile the source code;
 - Include utilslib.c and/or sortslib.c when compiling your code (e.g. `gcc -o my_exec my_main.c utilslib.c sortslib.c`).
 
 
-##utilslib.c
+## utilslib.c
 
 A set of miscelanious functions that facilitate memory allocation, string manipulation and more.
 
-###checkMemAlloc()
+### checkMemAlloc()
 
 prototype: `void checkMemAlloc(void *p);`
 
 Checks memory allocation for any pointer **\*p** given as input. If allocation was successful, it does nothing. Otherwise, it prints the memory allocation error and terminates the program.
 
-###writeToFile()
+### writeToFile()
 
 prototype: `void writeToFile(char *string, char *filename);`
 
 Straight-forward way to write text to file. Automatically opens FILE pointer, prints out string's content and closes it back.
 
-###appendToFile()
+### appendToFile()
 
 prototype: `void appendToFile(char *string, char *filename);`
 
 Same as writeToFile() but appends string's content to the end of file, instead of overwriting any previously existing content.
 
-###allocVec()
+### allocVec()
 
 prototype: `void* allocVec(int n,int size);`
 
 Uses stdlib's malloc() to allocate memory for **n** elements of same **size**, automatically checking if allocation worked. Returns a pointer to the base address of the allocated range. Can be used to allocate memory for a vector of size **n**.
 
-###callocVec()
+### callocVec()
 
 prototype: `void* callocVec(int n,int size);`
 
 Same as allocVec() but uses stdlib's calloc() instead of malloc() (all bits in allocated range are automatically set to 0).
 
-###allocMat()
+### allocMat()
 
 prototype: `void** allocMat(int m,int n,int size);`
 
 Uses stdlib's malloc() to allocate memory for **m** pointers to base addresses of **n** elements of same **size** each. Returns a pointer to the base address of the **m** pointers. Can be used to allocate memory for a matrix of size **m**x**n**.
 
-###callocMat()
+### callocMat()
 
 prototype: `void** callocMat(int m,int n,int size);`
 
 Same as allocMat() but uses stdlib's calloc() instead of malloc() (all bits in allocated ranges are automatically set to 0).
 
-###freeMat()
+### freeMat()
 
 prototype: `void freeMat(void **p,int m);`
 
 Provided a pointer to pointer **\*\*p**, recursivelly frees all memory allocated for the set of **m** pointers it points to and for the corresponding addresses each of these point to. Useful to deallocate memory used for a matrix.
 
-###streq()
+### streq()
 
 prototype: `int streq(char *a,char *b);`
 
 Compares any two strings **a** and **b** and returns 1 if they are identical or 0 otherwise.
 
-###strsect()
+### strsect()
 
 prototype: `char* strsect(char *str,int begin,int end);`
 
 Provided a pointer to a string (**\*str**), returns a pointer to a substring of it. This substring will equal the section of the original one that ranges from index **begin** to index **end**.
 
 
-##sortslib.c
+## sortslib.c
 
 A couple of user-defined comparator functions to be used together with stdlib's qsort function.
 
-###ccaComp
+### ccaComp
 
 prototype: `int ccaComp(const void *p,const void *q);`
 
@@ -95,7 +95,7 @@ qsort(ptomatrix,rown,sizeof(int),ccaComp);
 ```
 If not declared, **coln** will default to 1 and qsort will sort all rows according to the first column only.
 
-###fcaComp
+### fcaComp
 
 prototype: `int fcaComp(const void *p,const void *q);`
 
